@@ -5,8 +5,10 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   NavigationMenuContent,
+  NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 import { LogoCiti } from "@/assets";
+import Link from "next/link";
 
 const NavBar = () => {
   return (
@@ -24,7 +26,7 @@ const NavBar = () => {
               </NavigationMenuTrigger>
               <NavigationMenuContent>
                 <p className="text-sm p-5">
-                  Sou um site do CITi em homenagem a NASA
+                  Sou um site do CITi em homenagem à NASA
                 </p>
               </NavigationMenuContent>
             </NavigationMenuItem>
@@ -37,6 +39,17 @@ const NavBar = () => {
                   Entre em contato conosco pelo email: bonof@cin.ufpe.br
                 </p>
               </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link
+                href="https://github.com/ausikek/treinamento-next"
+                passHref
+                legacyBehavior
+              >
+                <NavigationMenuLink className="text-white text-sm font-medium">
+                  GitHub
+                </NavigationMenuLink>
+              </Link>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>

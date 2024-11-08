@@ -5,6 +5,7 @@ import { useNasaStore } from "../hooks/useNasa";
 import { useRouter } from "next/navigation";
 import { Separator } from "@/components/ui/separator";
 import { useEffect } from "react";
+import { ChevronLeft } from "lucide-react";
 
 export default function Page() {
   const nasaItem = useNasaStore((state) => state.selectedItem);
@@ -19,21 +20,19 @@ export default function Page() {
   if (!nasaItem) return <h1 className="h-screen">Redirecting...</h1>;
 
   return (
-    <div className="p-4">
-      <h1
-        className="hover:cursor-pointer mb-5 text-6xl w-1"
+    <div className="p-4 flex flex-col flex-grow min-h-[calc(100vh-10rem)]">
+      <ChevronLeft
+        className="hover:cursor-pointer w-16 h-16"
         onClick={() => router.back()}
-      >
-        {"<"}
-      </h1>
-      <main className="flex flex-col items-center gap-2 rounded-sm border-2 border-neutral-500 p-4">
+      />
+      <main className="flex flex-col items-center gap-2 rounded-sm border-2 border-neutral-500 p-4 flex-grow h-full">
         <h1 className="text-5xl font-bold">{nasaItem.data[0].title}</h1>
         <Image
           src={nasaItem.links[0].href}
           alt={nasaItem.data[0].title}
           width={500}
           height={500}
-          className="mt-4"
+          className="mt-4 rounded-md"
         />
         <h2 className="text-lg font-normal">
           {new Date(nasaItem.data[0].date_created).toLocaleDateString()}
