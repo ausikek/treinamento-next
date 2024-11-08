@@ -38,8 +38,8 @@ export default function Page() {
           {new Date(nasaItem.data[0].date_created).toLocaleDateString()}
         </h2>
         <h2 className="text-xl font-semibold">{`Center: ${nasaItem.data[0].center}`}</h2>
-        <Separator className="w-1/2" />
-        <p className="text-lg font-normal w-1/2">
+        <Separator className="lg:w-1/2" />
+        <p className="text-lg font-normal lg:w-1/2">
           {nasaItem.data[0].description}
         </p>
       </main>
