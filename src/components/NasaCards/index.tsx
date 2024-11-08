@@ -21,7 +21,7 @@ const NasaCards = ({ title, center, image, handleClick }: NasaCardsProps) => {
       onClick={handleClick}
     >
       <CardHeader>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle className="font-space">{title}</CardTitle>
       </CardHeader>
       <CardContent>
         <Image
@@ -30,10 +30,10 @@ const NasaCards = ({ title, center, image, handleClick }: NasaCardsProps) => {
           loading="lazy"
           width={150}
           height={150}
-          className="h-52 w-52"
+          className="h-52 w-52 rounded-md"
         />
       </CardContent>
-      <CardFooter>{center}</CardFooter>
+      <CardFooter className="font-space">{center}</CardFooter>
     </Card>
   );
 };

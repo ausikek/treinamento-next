@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { NasaCards } from "../NasaCards";
 import { useNasaStore } from "@/app/hooks/useNasa";
+import Loading from "@/app/loading";
 
 export interface NasaResponse {
   collection: {
@@ -52,7 +53,7 @@ const NasaCardsGrid = () => {
       <h1 className="text-space text-3xl">Nasa Mars Odyssey</h1>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full">
         {loading ? (
-          <h1 className="text-8xl h-screen">Loading...</h1>
+          <Loading />
         ) : (
           nasaData?.collection.items.map((item, index) => {
             return (
