@@ -48,20 +48,24 @@ const NasaCardsGrid = () => {
   };
 
   return (
-    <main className="p-4">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {nasaData?.collection.items.map((item, index) => {
-          return (
-            <NasaCards
-              key={index}
-              title={item.data[0].title}
-              center={item.data[0].center}
-              image={item.links[0].href}
-              loading={loading}
-              handleClick={() => handleCardClick(item)}
-            />
-          );
-        })}
+    <main className="p-4 flex flex-col items-center gap-5">
+      <h1 className="text-space text-3xl">Nasa Mars Odyssey</h1>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full">
+        {loading ? (
+          <h1 className="text-8xl h-screen">Loading...</h1>
+        ) : (
+          nasaData?.collection.items.map((item, index) => {
+            return (
+              <NasaCards
+                key={index}
+                title={item.data[0].title}
+                center={item.data[0].center}
+                image={item.links[0].href}
+                handleClick={() => handleCardClick(item)}
+              />
+            );
+          })
+        )}
       </div>
     </main>
   );
