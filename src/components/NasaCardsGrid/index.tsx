@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { NasaCards } from "../NasaCards";
-import { useNasaStore } from "@/app/hooks/useNasa";
 import Loading from "@/app/loading";
 
 export interface NasaResponse {
@@ -13,16 +12,20 @@ export interface NasaResponse {
 }
 
 export interface NasaItem {
+  href: string;
   data: {
     album: string[];
     center: string;
-    date_created: string;
-    description: string;
     title: string;
+    nasa_id: string;
+    date_created: string;
+    media_type: string;
+    description: string;
   }[];
   links: {
     href: string;
     rel: string;
+    render: string;
   }[];
 }
 
@@ -43,8 +46,7 @@ const NasaCardsGrid = () => {
   }, []);
 
   const handleCardClick = (item: NasaItem) => {
-    useNasaStore.getState().setSelectedItem(item);
-    const uniqueId = encodeURIComponent(item.data[0].title);
+    const uniqueId = encodeURIComponent(item.data[0].nasa_id);
     router.push(`/${uniqueId}`);
   };
 
